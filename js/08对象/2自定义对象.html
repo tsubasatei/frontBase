@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 第一种语法:调用系统的构造函数创建对象(Object)
+			var obj = new Object()
+			obj.name = '张三'
+			obj.age = 18
+			obj.eat = function(food) {
+				console.log(this.name + '正在吃' + food)
+			}
+			console.log(obj)
+			console.log(obj.name)
+			console.log(obj.age)
+			obj.eat('apples')
+
+			console.log('-----------------')
+			// 第二种语法: 自定义构造函数创建对象(function)
+			function Person(name, age) {
+				this.name = name
+				this.age = age
+				this.eat = function(food) {
+					console.log(this.name + '正在吃' + food)
+				}
+			}
+			var person = new Person('lisi', 20)
+			console.log(person)
+			console.log(person.name)
+			console.log(person.age)
+			person.eat('bananas')
+			console.log(person.__proto__)
+
+			// 第三种语法: 字面量的方式创建对象(JSON)
+			/*	JSON 
+				   var 对象名 ={属性名:属性值,属性名:属性值, ... ... ,方法名:方法声明,方法名:方法声明}
+		   */
+			console.log('-----------------')
+			var per = {
+				name: 'wangwu',
+				age: 22,
+				eat: function(food) {
+					console.log(this.name + '正在吃' + food)
+				}
+			}
+			console.log(per)
+			console.log(per.name)
+			console.log(per.age)
+			per.eat('oranges')
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

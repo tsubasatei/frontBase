@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>关系选择器</title>
+		<style type="text/css">
+			/*
+			 把div理解为一个“塑料袋”
+			 div属于块级元素--》换行
+			 span属于行内元素--》没有换行效果
+			 span:里面的内容占多大，span包裹的区域就多大*/
+
+			div {
+				border: 1px red solid;
+			}
+
+			span {
+				border: 1px greenyellow solid;
+			}
+
+			/*关系选择器:
+			 * 后代选择器：只要是这个元素的后代，样式都会发生变化
+			 * div下面的所有h1标签样式都会改变
+			 */
+			div h1 {
+				color: red;
+			}
+
+			/*关系选择器：子代选择器
+			  只改变子标签的样式*/
+			div>h1 {
+				color: royalblue;
+			}
+
+			span>h1 {
+				color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div>马士兵马士兵<br />马士兵马士兵</div>
+		<div>马士兵</div>
+		<span>马士兵马士兵</span>
+		<span>马士兵</span>
+		<span>马士兵</span>
+		<br>
+		<div>
+			<h1>这是标题</h1>
+			<h1>这是标题</h1>
+			<h1>这是标题</h1>
+			<h1>这是标题</h1>
+			<h1>这是标题</h1>
+			<span>
+				<h1>这是标题</h1>
+				<h1>这是标题</h1>
+				<h1>这是标题</h1>
+				<h1>这是标题</h1>
+				<h1>这是标题</h1>
+			</span>
+		</div>
+	</body>
+</html>

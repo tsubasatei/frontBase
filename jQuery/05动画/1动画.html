@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#d1{
+				height: 200px;
+				width: 200px;
+				background-color: green;
+				display: none;
+			}
+		</style>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function fun1() {
+				$('#d1').show(200)
+			}
+			function fun2() {
+				$('#d1').hide(200)
+			}
+			function fun3() {
+				$('#d1').toggle()
+			}
+			function fun4() {
+				$('#d1').slideDown(2000)
+			}
+			function fun5() {
+				$('#d1').slideUp(2000)
+			}
+			function fun6() {
+				$('#d1').slideToggle(2000)
+			}
+			function fun7() {
+				$('#d1').fadeIn(2000)
+			}
+			function fun8() {
+				$('#d1').fadeOut(2000)
+			}
+			function fun9() {
+				$('#d1').fadeToggle(2000)
+			}
+			function fun10() {
+				$('#d1').fadeTo(500, 0.2) // 0-1  透明度
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<input type="button" value="show" onclick="fun1()" />
+		<input type="button" value="hide" onclick="fun2()" />
+		<input type="button" value="toggle" onclick="fun3()" /><br />
+		<input type="button" value="slideDown" onclick="fun4()" />
+		<input type="button" value="slideUp" onclick="fun5()" />
+		<input type="button" value="slideToggle" onclick="fun6()" /><br>
+		<input type="button" value="fadeIn" onclick="fun7()" />
+		<input type="button" value="fadeOut" onclick="fun8()" />
+		<input type="button" value="fadeToggle" onclick="fun9()" />
+		<input type="button" value="fadeTo" onclick="fun10()" />
+	</body>
+	</body>
+</html>

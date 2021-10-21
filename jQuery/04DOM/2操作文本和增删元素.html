@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#d1,
+			#d2 {
+				width: 200px;
+				height: 200px;
+				border: 1px solid green;
+			}
+		</style>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script>
+			function fun1() {
+				/*
+				 * innerText >>>> text();
+				 * innerHTML >>>> html();
+				 * value     >>>> val();
+				 * 
+				 * */
+				console.log($("#d1").text())
+				console.log($("#d1").html())
+				console.log($("#i1").val())
+			}
+
+			function fun2() {
+				//$("#d1").text("<h1>牛气冲天</h1>");
+				$("#d1").html("<h1>牛气冲天</h1>");
+				$("#i1").val("你好");
+			}
+
+			function fun3() {
+				//$("#d1").html("");
+				$("#d1").empty(); // 清空内容
+				$("#i1").val("");
+			}
+
+			function fun4() {
+				// 创建元素
+				var span1 = $("<span></span>");
+				// 设置样式
+				span1.css("color", "green");
+				span1.css("border", "1px solid blue");
+				span1.css("background-color", "lightgray")
+				// 设置文字
+				span1.text("今天天气很好");
+
+
+				$('#d2').append(span1)
+
+			}
+
+			function fun5() {
+				var h = $("<h3>测试文字</h3>").css("color", "red").css("border", "1px solid green")
+				h.appendTo($('#d2'))
+			}
+
+			function fun6() {
+				var span1 = $('<span style="color: red; border: 1px solid orangered;">测试文字</span>')
+				$("#d2").before(span1);
+			}
+
+			function fun7() {
+				var span1 = $('<span style="color: red; border: 1px solid orangered;">测试文字</span>')
+				span1.insertBefore($("#d2"));
+			}
+
+			function fun8() {
+				var span1 = $('<span style="color: red; border: 1px solid orangered;">测试文字</span>')
+				$("#d2").after(span1);
+			}
+
+			function fun9() {
+				var span1 = $('<span style="color: red; border: 1px solid orangered;">测试文字</span>')
+				span1.insertAfter($("#d2"));
+			}
+
+			function fun10() {
+				$("#d2").empty()
+			}
+
+			function fun11() {
+				$("#d2").remove(); // 移除当前元素本身
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" value="这里是文字" id='i1' />
+		<div id='d1'>
+			a
+			<span>xxx</span>
+			b
+		</div>
+		<input type="button" value="获得标签内容" onclick="fun1()" />
+		<input type="button" value="修改标签内容" onclick="fun2()" />
+		<input type="button" value="删除标签中的内容" onclick="fun3()" />
+
+		<hr>
+		<div id='d2'>
+
+		</div>
+		<input type="button" value="testAppend" onclick="fun4()" />
+		<input type="button" value="testAppendTo" onclick="fun5()" />
+		<input type="button" value="testbefore" onclick="fun6()" />
+		<input type="button" value="testinsertBefore" onclick="fun7()" />
+		<input type="button" value="testafter" onclick="fun8()" />
+		<input type="button" value="testInsertAfter" onclick="fun9()" />
+		<input type="button" value="empty" onclick="fun10()" />
+		<input type="button" value="remove" onclick="fun11()" />
+	</body>
+</html>

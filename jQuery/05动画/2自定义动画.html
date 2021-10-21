@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#d1{
+				height: 200px;
+				width: 200px;
+				background-color: yellow;
+			}
+		</style>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		//$("").animate({动画内容},执行时间,动画结束后要执行的方法)
+			$(function() {
+				$('#d1').animate({
+					width:'100px',
+					height:'100px',
+					opcity:0.5,
+					borderRadius:'50px'
+				}, 2000, function() {
+					alert('动画执行完了')
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div id="d1"></div>
+	</body>
+</html>

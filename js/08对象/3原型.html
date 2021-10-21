@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			function Person(name, age) {
+				this.name = name
+				this.age = age
+				this.eat = function(food) {
+					console.log(this.age + '岁的' + this.name + '正在吃' + food)
+				}
+			}
+			console.log(Person)
+			console.log(Person.prototype)
+
+			// 给Person所有的对象增加属性和方法
+			// 给Person的原型增加属性
+			Person.prototype.gender = 'femail'
+			Person.prototype.sleep = function() {
+				console.log(this.age + '岁的' + this.gender + '孩儿' + this.name + '正在睡觉');
+			}
+			var p1 = new Person('z3', 5)
+			console.log(p1)
+			console.log(p1.gender)
+			p1.eat('牛油果')
+			p1.sleep()
+			
+			var p2 = new Person('l3', 6)
+			console.log(p2)
+			console.log(p2.gender)
+			p2.eat('水蜜桃')
+			p2.sleep()
+			
+			// 原型链
+			Object.prototype.height = 1
+			Object.prototype.play = function() {
+				console.log('大家都会玩')
+			}
+			console.log(p1.height)
+			p1.play()
+			console.log(p1)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.a {
+				background-color: aqua;
+			}
+
+			.c {
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+			}
+
+			.b {
+				border: 10px solid green;
+				border-radius: 20px;
+			}
+		</style>
+		<!--
+         	元素.style.样式名=
+         	css()
+         -->
+		<script>
+			function fun1() {
+				console.log($("#f1").attr("color"))
+				console.log($("#f1").attr("id"))
+				console.log($("#f1").attr("size"))
+			}
+
+			function fun2() {
+				$("#f1").attr("color", "green")
+				$("#f1").attr("size", "5")
+			}
+
+			function fun3() {
+				$("#f1").removeAttr("color")
+			}
+
+			function fun4() {
+				$("#f1").attr("class", "a")
+			}
+
+			function fun5() {
+				//获得d1的css样式
+				console.log($("#d1").css("width"));
+				console.log($("#d1").css("height"));
+				console.log($("#d1").css("background-color"));
+				//修改d1的css样式
+				$("#d1").css("width", "200px")
+				$("#d1").css("height", "300px")
+				$("#d1").css("background-color", "yellow");
+			}
+			/*
+			 * CSS 样式在实际的研发中,往往通过类选择器作用到元素上
+			 * jQuery就专门的封装了操作class属性值的方法
+			 * */
+
+			function fun6() {
+				$("#d2").addClass("b")
+			}
+
+			function fun7() {
+				$("#d2").removeClass("b")
+			}
+
+			function fun8() {
+				$("#d2").toggleClass("b") // 原来有b 则删除,如果没有,则增加b
+			}
+		</script>
+	</head>
+	<body>
+
+		<font id='f1' color="red" size="7">牛气冲天</font>
+		<hr />
+		<input type="button" value="获得属性" onclick="fun1()" />
+		<input type="button" value="修改属性" onclick="fun2()" />
+		<input type="button" value="删除属性" onclick="fun3()" />
+		<input type="button" value="添加属性" onclick="fun4()" />
+
+		<div id="d1" class="c">
+		</div>
+		<input type="button" value="修改样式" onclick="fun5()" />
+		<div id="d2" class="c">
+			d2
+		</div>
+		<input type="button" value="添加class值" onclick="fun6()" />
+		<input type="button" value="删除class值" onclick="fun7()" />
+		<input type="button" value="切换class值" onclick="fun8()" />
+	</body>
+</html>

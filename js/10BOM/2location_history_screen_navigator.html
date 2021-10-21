@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// location对象,是window对象的一个属性,代表浏览器上URL地址栏,使用location对象可以操作地址栏
+			function fun1() {
+				console.log(location)
+				console.log(location.host) // 服务器的IP+端口号
+				console.log(location.hostname) // IP 
+				console.log(location.port) // 端口号
+				console.log(location.href) // 地址栏中具体的文字
+				location.href = 'https://www.baidu.com'
+			}
+
+			// history对象是window对象的一个属性,代表浏览器访问历史记录,通过history的操作我们可以实现翻阅浏览器历史网页
+			function fun2() {
+				history.forward()()
+			}
+
+			function fun3() {
+				history.back()
+			}
+
+			function fun4() {
+				history.go(2) // 正整数 向前跳转 * 页  负整数 向后跳转*页
+			}
+
+			// screen代表屏幕,navigator代表浏览器软件本身,通过这两个对象可以获得屏幕和浏览器软件的一些信息
+			function fun() {
+				console.info(window.screen.width)
+				console.info(window.screen.height)
+				console.info(navigator.userAgent)
+				console.info(navigator.appName)
+			}
+			
+		</script>
+	</head>
+	<body onload="fun()">
+		<input type="button" value="测试location" onclick="fun1()" /><br>
+
+		<a href="a.html" target="_self">pageA</a>
+		<input type="button" value="向前" onclick="fun2()" />
+		<input type="button" value="向后" onclick="fun3()" />
+		<input type="button" value="go" onclick="fun4()" />
+	</body>
+</html>

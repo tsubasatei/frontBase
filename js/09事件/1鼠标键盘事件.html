@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.d1 {
+				width: 100px;
+				height: 100px;
+				background-color: greenyellow;
+			}
+		</style>
+		<script type="text/javascript">
+			function fun1() {
+				console.log('double click')
+			}
+
+			function fun2() {
+				console.log('mouse down')
+			}
+
+			function fun3() {
+				console.log('mouse up')
+			}
+
+			function fun4() {
+				console.log('mouse enter')
+			}
+
+			function fun5() {
+				console.log('mouse leave')
+			}
+
+			function fun6() {
+				console.log('mouse move')
+			}
+			
+			function fun7() {
+				console.log('key down')
+			}
+			
+			function fun8() {
+				console.log('key up')
+			}
+			
+			function fun9() {
+				console.log('key press')
+			}
+
+		</script>
+	</head>
+	<body>
+		<div class="d1" ondblclick="fun1()" onmousedown="fun2()" onmouseup="fun3()" onmouseenter="fun4()"
+			onmouseleave="fun5()" onmousemove="fun6()">
+		</div>
+		<input type="text" onkeydown="fun7()" onkeyup="fun8()" onkeypress="fun9()" />
+	</body>
+</html>

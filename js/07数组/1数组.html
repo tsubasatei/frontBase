@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/*第一种
+			 *创建了一个空数组 new Array();
+			 * */
+			var arr1 = new Array()
+			arr1[0] = 1
+			console.log(arr1)
+
+			/*
+			 *第二种
+			 * 创建定长数组 new Array(5);
+			 * */
+			var arr2 = new Array(5)
+			arr2[0] = 10
+			arr2[1] = 'hello'
+			console.log(arr2)
+
+			/*
+			 * 第三种创建语法
+			 * 创建时,直接指定元素值
+			 * */
+			var arr3 = new Array('hello', 3, true, 3.14, false)
+			console.log(arr3)
+
+			/*
+			 *第四种语法
+			 * 相当于第三种语法的简写
+			 * */
+			var arr4 = ['hello', 3, true, 3.14, false]
+			console.log(arr4)
+
+			var arr = [11, 22, 33]
+			console.log(arr)
+			console.log(arr[0])
+			console.log(arr.length)
+
+			/*
+			 * JS中的数组是可以通过修改length属性来改变数组长度的
+			 * */
+			arr.length = 5
+			console.log(arr)
+
+			/*
+			 * JS的数组可以通过索引改变数组的长度
+			 * */
+			arr[9] = 10
+			console.log(arr)
+
+			// 遍历
+			/*
+			 * 普通for循环遍历数组
+			 * */
+			var arr = [5, 7, 3, 1, 6, 2, 4, 9, 8];
+			for (var i = 0; i < arr.length; i++) {
+				console.log(arr[i])
+			}
+
+			console.log('-----------------------------')
+
+			/*
+			 *foreach循环遍历数组
+			 * JS 中foreach写法为  for( var i in 数组)
+			 * i 不是元素  是索引
+			 * */
+			for (var i in arr) {
+				console.log(arr[i])
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

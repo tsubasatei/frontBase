@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* String 常用方法 */
+			// 根据索引获取字符
+			var str = 'hello js'
+			var c = str.charAt(6)
+			console.log(c)
+
+			// 拼接字符串
+			var a = "hi"
+			var b = "good"
+			var c = "China"
+			var d = c.concat(a, b)
+			console.log(d)
+
+			// 重复
+			var e = 'asdf'
+			var f = e.repeat(2)
+			console.log(f)
+
+			// 截取字符串
+			var g = 'helloJohn'
+			// 从哪里开始,连续截取多少个字符
+			var h = g.substr(1, 5)
+			console.log(h) // elloJ
+			// 从哪里开始,到哪里结束,包头不包尾
+			var i = g.substring(1, 7)
+			console.log(i) // elloJo
+
+			// 获取长度 length 属性
+			console.log(g.length)
+
+			// JS中非常特殊的一个函数,可以将一段字符串当做JS代码来执行
+			// 将字符串内容解析称JS代码并运行
+			var testStr = 'var x = 10'
+			eval(testStr)
+			console.log(x)
+
+
+			/* Number 常用方法 */
+			console.log(Number.MAX_VALUE)
+			console.log(Number.MIN_VALUE)
+			console.log(Number.MAX_SAFE_INTEGER)
+			console.log(Number.MIN_SAFE_INTEGER)
+
+			console.log(Number.parseFloat('3.14') + 20)
+			console.log(Number.parseInt('10') + 20)
+
+			var i = 10 % 0 // NaN
+			var j = 10 / 0 // Infinity
+			console.log(i)
+			console.log(j)
+			console.log(Number.isFinite(j)) // false
+			console.log(Number.isNaN(i)) // true
+			console.log(Number.isSafeInteger(Number.MAX_INTEGER)) // false
+			console.log(Number.isSafeInteger(Number.MAX_SAFE_INTEGER)) // true
+
+			/* Math */
+			console.log(Math.round(3.64))
+			console.log(Math.floor(3.14))
+			console.log(Math.ceil(3.01))
+			console.log(Math.max(1, 2, 3, 4))
+			console.log(Math.min(1, 2, 3, 4))
+			console.log(Math.random())
+			console.log(Math.sqrt(16))
+
+			console.log(Math.PI)
+
+			// 生成给定范围内的随机数
+			var start = 10
+			var end = 16
+			var result = Math.floor(Math.random() * (end - start + 1)) + start
+			console.log(result)
+
+			/* Date  */
+			// 在程序中 西方的月份编号从0开始
+			var today = new Date()
+			console.log(today)
+			var d1 = new Date("October 13, 1975 11:13:00")
+			var d2 = new Date(79, 5, 24)
+			var d3 = new Date(79, 5, 24, 11, 33, 0)
+			console.log(d1);
+			console.log(d2);
+			console.log(d3);
+
+			var d4 = new Date(2048, 0, 13, 16, 51, 20, 123)
+			console.log(d4)
+			// set***  略自己尝试一下
+			console.log(d4.getYear()); // 和1900年的年份差
+			console.log(d4.getFullYear()); // 完整的年份
+			console.log(d4.getMonth());
+			console.log(d4.getDate());
+			console.log(d4.getHours());
+			console.log(d4.getMinutes());
+			console.log(d4.getSeconds());
+			console.log(d4.getMilliseconds());
+			var d5 = new Date(2048, 0, 13, 16, 51, 20, 456)
+			console.log(d4 < d5)
+
+
+			// 关于日期对象格式化处理
+			/*date对象的格式化方法*/
+			/*修改Date原型,添加一个format格式化的方法*/
+			Date.prototype.format = function(fmt) {
+				var o = {
+					"M+": this.getMonth() + 1, //月份
+					"d+": this.getDate(), //日
+					"h+": this.getHours(), //小时
+					"m+": this.getMinutes(), //分
+					"s+": this.getSeconds(), //秒
+					"q+": Math.floor((this.getMonth() + 3) / 3), //季度
+					"S": this.getMilliseconds() //毫秒
+				};
+
+				if (/(y+)/.test(fmt)) {
+					fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+				}
+
+				for (var k in o) {
+					if (new RegExp("(" + k + ")").test(fmt)) {
+						fmt = fmt.replace(
+							RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+					}
+				}
+				return fmt;
+			}
+
+
+			var fmt = d4.format("yyyy-MM-dd hh:mm:ss");
+			console.log(fmt)
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

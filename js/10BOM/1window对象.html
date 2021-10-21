@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// 如果是使用window对象调用的方法和访问的属性 那么window对象都可以省略不写
+			function fun1() {
+				//普通信息提示框
+				alert('我是1号button')
+			}
+
+			function fun2() {
+				// 确认框
+				var con = window.confirm('你好吗？我是2号button')
+				console.log(con)
+			}
+
+			function fun3() {
+				// 信息输入框
+				var input = window.prompt('我是3号button，请输入你的姓名：')
+				console.log(input)
+			}
+
+
+			var intervalIDS = new Array(); // [1,2,3 ]
+			// 循环执行的定时器任务
+			function startInterval() {
+				// 2
+				var intervalID = window.setInterval(
+					function() {
+						var today = new Date();
+						var hours = today.getHours();
+						var minutes = today.getMinutes();
+						var seconds = today.getSeconds();
+						var str = hours + "点" + minutes + "分" + seconds + "秒";
+
+						var ta = document.getElementById("timeArea");
+						ta.value = str;
+
+					},
+					1000
+				);
+				intervalIDS.push(intervalID);
+			}
+
+			function stopInterval() {
+				while (intervalIDS.length > 0) {
+					window.clearInterval(intervalIDS.shift());
+				}
+
+
+			}
+
+			var timeoutIDS = new Array();
+			// 执行一次的定时器任务
+			function startTimeout() {
+
+				var timeoutID = window.setTimeout(
+					function() {
+						var today = new Date();
+						var hours = today.getHours();
+						var minutes = today.getMinutes();
+						var seconds = today.getSeconds();
+						var str = hours + "点" + minutes + "分" + seconds + "秒";
+						console.log(str)
+
+					},
+					5000
+				);
+
+				timeoutIDS.push(timeoutID);
+			}
+
+			function stopTimeout() {
+				while (timeoutIDS.length > 0) {
+					window.clearTimeout(timeoutIDS.shift());
+				}
+			}
+			
+			function fun4() {
+				window.open('https://www.baidu.com')
+			}
+			function fun5() {
+				window.close()
+			}
+		</script>
+	</head>
+	<body>
+		<h1>window 弹窗</h1>
+		<input type="button" value="测试按钮1" onclick="fun1()" />
+		<input type="button" value="测试按钮2" onclick="fun2()" />
+		<input type="button" value="测试按钮3" onclick="fun3()" /><br />
+
+		<h1>定时器</h1>
+		<input type="text" id="timeArea" /> <br />
+		<input type="button" value="开始Interval" onclick="startInterval()" />
+		<input type="button" value="结束Interval" onclick="stopInterval()" />
+		<input type="button" value="开始timeout" onclick="startTimeout()" />
+		<input type="button" value="结束timeout" onclick="stopTimeout()" />
+
+		<h1>open & close</h1>
+		<input type="button" value="打开百度" onclick="fun4()" />
+		<input type="button" value="关闭页面" onclick="fun5()" />
+	</body>
+</html>

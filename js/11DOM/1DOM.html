@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			#div1 {
+				width: 100px;
+				height: 100px;
+				border: 1px solid red;
+
+			}
+
+			.a {
+				background-color: lightblue;
+				color: blue;
+				font-size: 40px;
+			}
+		</style>
+		<script type="text/javascript">
+			function fun1() {
+				// 获得document对象
+				var element1 = document.getElementById("d1");
+				console.log(element1);
+
+				element1.innerText = "这是我的div";
+			}
+
+			function fun2(className) {
+				var elements = document.getElementsByClassName(className);
+				console.log(elements)
+				for (var i = 0; i < elements.length; i++) {
+					console.log(elements[i])
+				}
+			}
+
+			function fun3() {
+				var elements = document.getElementsByTagName("input");
+				console.log(elements);
+				for (var i = 0; i < elements.length; i++) {
+					console.log(elements[i])
+				}
+			}
+
+			function fun4() {
+				var elements = document.getElementsByName("hobby");
+				console.log(elements);
+				for (var i = 0; i < elements.length; i++) {
+					console.log(elements[i])
+				}
+			}
+
+			function fun5() {
+				//获得属性值
+				var node = document.getElementById("in1");
+
+				// 语法1     获得  节点.属性名    修改  节点.属性名 =属性值
+				console.log(node.type);
+				console.log(node.value);
+				//改变属性值
+				node.type = "button";
+				node.value = "你好我也好";
+
+
+				// 语法2  getAttribute   setAttribute
+				console.log(node.getAttribute("type"));
+				console.log(node.getAttribute("value"));
+
+				node.setAttribute("type", "button");
+				node.setAttribute("value", "大家好");
+			}
+
+			function fun6() {
+				// 节点.style.样式名=样式值
+				var element = document.getElementById("div1");
+				element.style.width = "200px";
+				element.style.height = "200px";
+				element.style.border = "10px solid green";
+				// css样式在更多的时候是以class选择器的形式作用到元素上
+				// 可以通过修改class属性,影响div的样式
+				element.setAttribute("class", "a")
+			}
+
+			function fun7() {
+				var element = document.getElementById("div2")
+				/*
+				 * innerText  不包含HTML结构
+				 * innerHTML  包含HTML结构
+				 * */
+				console.log(element.innerText)
+				console.log(element.innerHTML)
+
+				var element = document.getElementById("inp1")
+				console.log(element.value)
+			}
+
+			function fun8() {
+				var element1 = document.getElementById("div2")
+				//element1.innerText="<h1>一刻也不能分割</h1>"
+				element1.innerHTML = "<h1>一刻也不能分割</h1>"
+
+				var element2 = document.getElementById("inp1")
+				element2.value = "无论我走到哪里"
+			}
+		</script>
+	</head>
+	<body>
+		<div id='d1' class="a">这是第一个div</div>
+		<div id='d2' class="a">这是第二个div</div>
+		<div id='d3' class="a">这是第三个div</div>
+		<input id='i1' class="a" name='name1' />
+		<div id='d4' class="b" name='name1'>这是第四个div</div>
+		<div id='d5' class="b">这是第五个div</div>
+		爱好:
+		<input type="checkbox" name="hobby" value="1" />篮球
+		<input type="checkbox" name="hobby" value="2" />足球
+		<input type="checkbox" name="hobby" value="3" />羽毛球
+
+		<hr />
+		<input type="button" value="id值获取" onclick='fun1()' />
+		<input type="button" value="class属性值获取" onclick='fun2("b")' />
+		<input type="button" value="标签名获取" onclick='fun3()' />
+		<input type="button" value="name属性值获取" onclick='fun4()' />
+
+		<hr>
+		<hr>
+		<input type="text" value="你好呀" id="in1" />
+		<hr />
+		<input type="button" value="变" onclick="fun5()" />
+
+		<hr>
+		<hr>
+		<div id="div1">你好呀</div>
+		<hr />
+		<input type="button" value="测试" onclick="fun6()" />
+
+		<hr>
+		<hr>
+		<div id='div2'>
+			a
+			<span>文字</span>
+			b
+		</div>
+
+		<input type="text" value="我和我的祖国" id='inp1' />
+
+		<input type="button" value="获取内容" onclick="fun7()" />
+		<input type="button" value="修改内容" onclick="fun8()" />
+	</body>
+</html>
