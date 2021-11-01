@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			[v-cloak]{
+				display: none;
+			}
+			img{
+				height: 400px;
+				width: 400px;
+			}
+			p{
+				height: 200px;
+				width: 200px;
+				background: blue;
+			}
+			.red{
+				background: red;
+			}
+			.pink{
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2 v-once>{{num}}</h2>
+			<h2 v-pre>{{num}}</h2>
+			<button type="button" @click="add">点我加1</button>
+			<button type="button" @click="minus">点我减1</button>
+			<p v-if="bool == 100">第一行</p>
+			<p v-if="!bool">第二行</p>
+			<p v-if="num <= 5">我是5</p>
+			<p v-else-if="num <= 10 && num >= 6">我是10</p>
+			<p v-else>我是10+</p>
+			<p v-show="num < 5">今天天气真好</p>
+			<p v-show="num >= 5">今天天气不好</p>
+			<ul>
+				<li v-for="(item, index) in arr" :key="index">{{index}}-{{item}}</li>
+			</ul>
+			<ul>
+				<li v-for="(item, key, index) in obj" :key="key">{{index}}-{{key}}:{{item}}</li>
+			</ul>
+			<table border="1px" cellspacing="0" cellpadding="0">
+				<tr>
+					<th>姓名</th>
+					<th>年龄</th>
+					<th>性别</th>
+					<th>身高</th>
+				</tr>
+				<tr v-for="(item,index) in users" :key="index">
+					<td>{{item.name}}</td>
+					<td>{{item.age}}</td>
+					<td>{{item.gender}}</td>
+					<td>{{item.height}}</td>
+				</tr>
+			</table>
+			
+			<table border="1px" cellspacing="0" cellpadding="0">
+				<tr v-for="i in nums">
+					<td v-for="j in i">{{j}} * {{i}} = {{i * j}}</td>
+				</tr>
+			</table>
+			
+			<p v-cloak>--------{{a}}--------</p>
+			<p v-text="a">----------------</p>
+			<p v-html="a">----------------</p>
+			<div>
+				<img :src="'img/tsubasa' + url + '.jpg'" >
+			</div>
+			<button type="button" @click="add">下一张</button>
+			<button type="button" @click="minus">上一张</button>
+			<div id="d">
+				<!-- :class="{red: url == 3, pink:url == 4}" -->
+				<p  :style="{width: b + 'px'}">{{url}}</p>
+			</div>
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		// alert(Vue) // 弹出一个function，代表vue引入成功
+			new Vue ({
+				el:'#app',
+				data:{
+					num:100,
+					bool:100, //true
+					arr:[
+						'苹果',
+						'香蕉',
+						'橘子'
+					],
+					obj:{
+						name:'Tsubasa',
+						age:18,
+						gender:'male',
+						hobby:'football'
+						
+					},
+					users:[
+						{name:'Naruto', age:18, gender:'male', height:'175cm'},
+						{name:'Sakura', age:19, gender:'female', height:'165cm'},
+						{name:'Sasuke', age:20, gender:'male', height:'180cm'}
+					],
+					nums:[1,2,3,4,5,6,7,8,9],
+					a:'<h1>插值内容</h1>',
+					url:1,
+					b:100
+				},
+				methods:{
+					add(){
+						this.num++
+						console.log(this.num)
+						this.url++
+						if (this.url > 5) this.url = 1
+						this.b = this.b + 20
+					},
+					minus() {
+						this.num--
+						console.log(this.num)
+						this.url--
+						if (this.url < 1) this.url = 5
+						this.b = this.b - 20
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

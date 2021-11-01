@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.outer{
+				height: 180px;
+				width: 180px;
+				background: gold;
+				margin: 100px auto;
+				padding: 30px;
+				border-radius: 50%;
+			}
+			
+			.outer .center{
+				height: 130px;
+				width: 130px;
+				padding: 30px;
+				background: pink;
+				border-radius: 50%;
+				
+			}
+			.outer .center .inner{
+				height: 60px;
+				width: 60px;
+				padding: 30px;
+				background: cyan;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="outer" @click.capture="outer">
+				<div class="center" @click.capture="center">
+					<div class="inner" @click.capture="inner"></div>
+				</div>
+			</div>
+			<div >
+				{{num}}
+				<p><button type="button" @click.once="add">点我加1，一次</button></p>
+			</div>
+			<div >
+				{{num}}
+				<input type="text" @keydown.space="add" />
+			</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:'#app',
+				data:{
+					num:100
+				},
+				methods:{
+					outer() {
+						console.log("外层")
+					},
+					center() {
+						console.log("中间")
+					},
+					inner() {
+						console.log("内层")
+					},
+				
+					
+					add(){
+						this.num++
+						console.log(this.num)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

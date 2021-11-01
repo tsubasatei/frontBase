@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.outer{
+				height: 180px;
+				width: 180px;
+				background: gold;
+				margin: 100px auto;
+				padding: 30px;
+				border-radius: 50%;
+			}
+			
+			.outer .center{
+				height: 130px;
+				width: 130px;
+				padding: 30px;
+				background: pink;
+				border-radius: 50%;
+				
+			}
+			.outer .center .inner{
+				height: 60px;
+				width: 60px;
+				padding: 30px;
+				background: cyan;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="outer" @click.self="outer">
+				<div class="center" @click.self="center">
+					<div class="inner" @click.self="inner"></div>
+				</div>
+			</div>
+			<div >
+				<a href="https://www.baidu.com" @click.prevent="alertDialog">点击跳转百度</a>
+			</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:'#app',
+				data:{
+					
+				},
+				methods:{
+					outer() {
+						console.log("外层")
+					},
+					center() {
+						console.log("中间")
+					},
+					inner() {
+						console.log("内层")
+					},
+					/* inner(event) {
+						event.stopPropagation()
+						console.log("内层")
+					} */
+					
+					alertDialog(){
+						alert('我是超链接')
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app" v-cloak>
+			<h1>问卷调查</h1>
+			姓名:<input type="text" v-model="name" /><br/>
+			性别:<input type="radio" name="gender" v-model="gender" value="男"/>男 
+			     <input type="radio" name="gender" v-model="gender" value="女"/>女<br/>
+			爱好:<input type="checkbox" name="hobby" v-model="hobby" value="吃饭"/> 吃饭
+				 <input type="checkbox" name="hobby" v-model="hobby" value="睡觉"/>睡觉
+				 <input type="checkbox" name="hobby" v-model="hobby" value="打豆豆"/>打豆豆<br/>
+			籍贯:<select v-model="native" name="native">
+				<option v-for="(item,index) in natives" :key="index">{{item}}</option>
+			</select><br/>
+			<p>您填写的信息是：姓名：{{name}}、性别：{{gender}}、爱好：{{hobby}}、籍贯:{{native}}</p>
+			<button type="button" @click="submit">提交</button>
+		</div>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			new Vue({
+				el:'#app',
+				data:{
+					name:'',
+					gender:'',
+					hobby:[],
+					natives:['河北', '河南','湖南', '湖北'],
+					native:''
+				},
+				methods:{
+					submit() {
+						let obj = {
+							name:this.name, 
+							gender:this.gender, 
+							hobby:this.hobby, 
+							native:this.name,
+						}
+						console.log(obj)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
