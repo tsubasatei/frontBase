@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <form @submit.prevent="demo">
+        账号：<input v-model.trim="user.username" type="text" /><br />
+        密码：<input v-model="user.pwd" type="password" /><br />
+        年龄<input v-model.number="user.age" type="number" /><br />
+        性别: 男<input
+          v-model="user.gender"
+          type="radio"
+          name="gender"
+          value="男"
+        />
+        女<input
+          v-model="user.gender"
+          type="radio"
+          name="gender"
+          value="女"
+        /><br />
+        爱好： 抽烟<input
+          v-model="user.hobbies"
+          type="checkbox"
+          name="hobbies"
+          value="抽烟"
+        />
+        喝酒<input
+          v-model="user.hobbies"
+          type="checkbox"
+          name="hobbies"
+          value="喝酒"
+        />
+        烫头<input
+          v-model="user.hobbies"
+          type="checkbox"
+          name="hobbies"
+          value="烫头"
+        /><br />
+        所属校区：<select v-model="user.schoolArea">
+          <option value="" selected="selected">请选择校区</option>
+          <option
+            :value="index"
+            v-for="(item, index) in schoolAreas"
+            ::key="index"
+          >
+            {{item}}
+          </option></select
+        ><br />
+        其他信息：<textarea
+          name=""
+          v-model.lazy="user.otherInfo"
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea
+        ><br />
+        <input v-model="agree" type="checkbox" /> 阅读并接受<a href=""
+          >《用户协议》</a
+        ><br />
+        <button>提交</button>
+      </form>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          user: {
+            username: "",
+            pwd: "",
+            age: 0,
+            gender: "",
+            hobbies: [],
+            schoolArea: "",
+            otherInfo: "",
+          },
+          schoolAreas: ["北京", "上海", "广州", "深圳"],
+          agree: true,
+        },
+        methods: {
+          demo() {
+            console.log(JSON.stringify(this.user));
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <h2>人员列表</h2>
+      <button @click="updateMei">更新马冬梅信息</button>
+      <ul>
+        <li v-for="(item, index) in users" :key="item.id">
+          {{item.name}} - {{item.age}} - {{item.gender}}
+        </li>
+      </ul>
+    </div>
+    <script src="vue.min.js"></script>
+    <script>
+      Vue.config.productionTip = false;
+
+      new Vue({
+        el: "#app",
+        data: {
+          users: [
+            { id: "001", name: "马冬梅", age: 31, gender: "女" },
+            { id: "002", name: "周冬雨", age: 20, gender: "女" },
+            { id: "003", name: "周杰伦", age: 45, gender: "男" },
+            { id: "004", name: "温兆伦", age: 40, gender: "男" },
+          ],
+        },
+        methods: {
+          updateMei() {
+            // this.users[0].name = "马老师"; // 奏效
+            // this.users[0].age = 58;// 奏效
+            // this.users[0].gender = "男";// 奏效
+
+            this.users.splice(0, 1, {
+              id: "001",
+              name: "马老师",
+              age: 58,
+              gender: "男",
+            });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

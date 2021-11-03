@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script>
+      Vue.config.productionTip = false;
+
+      const student = Vue.extend({
+        template: `
+            <div>
+              <h2>学生姓名：{{studentName}}</h2>
+              <h2>学生年龄{{studentAge}}</h2>
+          </div>
+            `,
+        data() {
+          return {
+            studentName: "尚硅谷",
+            studentAge: "北京",
+          };
+        },
+      });
+
+      const hello = Vue.extend({
+        template: `<div>
+            <h1>同学，你好啊！</h1>
+            </div>`,
+      });
+      const school = {
+        name: "Atguigu",
+        template: `
+            <div>
+              <h2>学校名称：{{schoolName}}</h2>
+              <h2>学校地址：{{schoolAddress}}</h2>
+              <student></student>
+            </div>
+            `,
+        data() {
+          return {
+            schoolName: "尚硅谷",
+            schoolAddress: "北京",
+          };
+        },
+        components: {
+          student,
+        },
+      };
+
+      const app = {
+        template: `<div>
+          <school></school>
+          <hello></hello>
+          </div>`,
+        components: {
+          school,
+          hello,
+        },
+      };
+      new Vue({
+        el: "#app",
+        template: "<app></app>",
+        components: {
+          app,
+        },
+      });
+    </script>
+  </body>
+</html>

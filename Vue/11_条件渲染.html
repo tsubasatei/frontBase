@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <h2 v-show="true">欢迎来到{{name}}</h2>
+      <h2 v-if="true">欢迎来到{{name}}</h2>
+      <hr />
+      <h2>当前n的值是: {{n}}</h2>
+      <button @click="add">点我加1</button>
+      <div v-if="n === 1">Angular</div>
+      <div v-else-if="n === 2">React</div>
+      <div v-else-if="n === 3">Vue</div>
+      <div v-else=>JS</div>
+
+      <hr/>
+      <template v-if="n === 1">
+        <h2>你好</h2>
+        <h2>尚硅谷</h2>
+        <h2>北京</h2>
+      </template>
+      
+    </div>
+    <script>
+      Vue.config.productionTip = false;
+      new Vue({
+        el: "#app",
+        data: {
+          name: "尚硅谷",
+          n: 0,
+        },
+        methods: {
+          add() {
+            this.n++;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

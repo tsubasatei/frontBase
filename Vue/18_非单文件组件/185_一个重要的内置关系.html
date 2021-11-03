@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <school></school>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      Vue.config.productionTip = false;
+      // function Demo() {
+      //   this.a = 1;
+      //   this.b = 2;
+      // }
+      // const d = new Demo();
+      // console.log(Demo.prototype); // 显示原型属性
+      // console.log(d.__proto__); // 隐式原型属性
+      // console.log(Demo.prototype === d.__proto__);
+      // Demo.prototype.x = 99;
+      // console.log("@", d.x);
+      // console.log(d);
+
+      Vue.prototype.x = 99;
+      const school = Vue.extend({
+        template: `
+            <div>
+              <h2>学校名称：{{schoolName}}</h2>
+              <h2>学校地址：{{schoolAddress}}</h2>
+              <button @click="showX">点我输出</button>
+            </div>
+            `,
+        data() {
+          return {
+            schoolName: "尚硅谷",
+            schoolAddress: "北京",
+          };
+        },
+        methods: {
+          showX() {
+            alert(this.x);
+          },
+        },
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          msg: "你好",
+        },
+        components: {
+          school,
+        },
+      });
+
+      console.log(school.prototype.__proto__ == Vue.prototype);
+    </script>
+  </body>
+</html>
